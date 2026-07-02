@@ -2,7 +2,7 @@
 
 **MS Computer Science @ University of Wyoming** (GPA: 4.0) · Graduating May 2027  
 **Graduate Research Assistant** · Geometric Intelligence Research Lab (GIRL)  
-📍 Laramie, WY · 🌐 [aashishpokhrel.com](https://aashishpokhrel.com) · 💼 [LinkedIn](https://linkedin.com/in/aashishpokhrel)
+📍 Laramie, WY · 🌐 [aashishpokhrel.com]([https://aashishpokhrel.com](https://aashishpokhrel27.github.io/)) · 💼 [LinkedIn](https://linkedin.com/in/aashishpokhrel)
 
 ---
 
