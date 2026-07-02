@@ -19,7 +19,7 @@ Before grad school, I spent 4 years as a **data engineer and BI consultant** bui
 | Paper | Venue | Links |
 |---|---|---|
 | *Negation Matters: Training-Free Negation-Aware Image Retrieval* | GRAIL-V Workshop, CVPR 2026 | [Repo](https://github.com/aashishpokhrel27/SpaceVLM-DRC) |
-| *Negation in Vision-Language Models: A Survey* | ICPR 2026 | [Repo](https://github.com/aashishpokhrel27/vlm-negation-survey) |
+| *Negation in Vision-Language Models: A Survey* | ICPR 2026 | [Repo](https://github.com/aashishpokhrel27/negation-in-vlms) |
 
 ---
 
