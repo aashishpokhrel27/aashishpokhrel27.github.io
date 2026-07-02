@@ -58,11 +58,5 @@ Before grad school, I spent 4 years as a **data engineer and BI consultant** bui
 
 ---
 
-## GitHub Activity
-
-![Aashish's GitHub Stats](https://github-readme-stats.vercel.app/api?username=aashishpokhrel27&show_icons=true&hide_border=true&theme=default&hide=stars)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=aashishpokhrel27&layout=compact&hide_border=true&theme=default)
-
----
 
 *Open to **MLE, Data Engineer, Applied Scientist, and CV Research** roles · H1B sponsorship required · Available May 2027*
