@@ -52,7 +52,7 @@ Before grad school, I spent 4 years as a **data engineer and BI consultant** bui
 | Project | Description | Stack |
 |---|---|---|
 | 🔬 [SpaceVLM-DRC](https://github.com/aashishpokhrel27/SpaceVLM-DRC) | Training-free negation-aware image retrieval · CVPR 2026 | PyTorch, CLIP, Python |
-| 📖 [VLM Negation Survey](https://github.com/aashishpokhrel27/vlm-negation-survey) | Comprehensive survey on negation in VLMs · ICPR 2026 | Python, NLP |
+| 📖 [VLM Negation Survey](https://github.com/aashishpokhrel27/negation-in-vlms) | Comprehensive survey on negation in VLMs · ICPR 2026 | Python, NLP |
 | 🌐 [Portfolio Website](https://github.com/aashishpokhrel27/portfolio) | Personal academic + professional portfolio | HTML, CSS, JS |
 | 🖼️ [Background Image Removal](https://github.com/aashishpokhrel27/BackgroundImageRemoval) | Deep learning-based background segmentation · Undergrad thesis | Python, PyTorch |
 
