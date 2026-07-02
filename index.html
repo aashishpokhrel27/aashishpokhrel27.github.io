@@ -387,6 +387,13 @@
     .exp-org {
       font-size: 13.5px;
       color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .exp-clients {
+      font-size: 12.5px;
+      color: var(--ink-light);
+      font-style: italic;
       margin-bottom: 8px;
     }
 
@@ -516,9 +523,9 @@
 
       <div class="cv-links">
         <div class="cv-dropdown-wrap" id="cvWrap">
-          <button 
-          class="cv-btn" 
-          id="cvBtn" 
+          <button
+          class="cv-btn"
+          id="cvBtn"
           onclick="toggleCV(event)">
             CV <span class="caret">▼</span>
           </button>
@@ -589,7 +596,7 @@ Providing essential background on VLMs and negation in natural language processi
             <a href="#" class="abstract-toggle" data-target="abstract-retrieval">abstract</a>
           </div>
           <div class="abstract-panel" id="abstract-retrieval" style="text-align: justify;">
-            Negation—the linguistic ability to assert the absence of a concept—is a critical bottleneck in vision-language understanding. Vision-language models have demonstrated remarkable success in aligning visual and textual representation across domains such as content moderation, medical image retrieval, and natural language-guided search. Yet, these models consistently fail to handle negation
+            Negation—the linguistic ability to assert the absence of a concept—is a critical bottleneck in vision-language understanding. Vision-language models have achieved remarkable success in aligning visual and textual representation across domains such as content moderation, medical image retrieval, and natural language-guided search. Yet, these models consistently fail to handle negation
 robustly, often retrieving images that contain the very concept that was explicitly excluded. Existing methods address this limitation through fine-tuning on synthetic negation corpora—an approach that is computationally expensive, dataset-dependent, and prone to compromising generalization to unseen distributions. We propose <b>SpaceVLM-DRC</b>, which introduces <b>D</b>ynamic <b>R</b>epulsion with <b>C</b>ontext Anchoring (DRC) into the SpaceVLM framework as a training-free inference time negation resolution mechanism over a frozen CLIP backbone. This framework first decomposes queries into affirmative, negated, and counterfactual components, then applies dynamic repulsion to push negated concepts away in the embedding space, and finally anchors retrieval within the full-caption context to preserve semantic coherence. SpaceVLM-DRC surpasses state-of-the-art results on the MSRVTT negation retrieval benchmark and achieves performance comparable to fully fine-tuned approaches on the COCO negated retrieval dataset. Crucially, it requires no model retraining while preserving zero-shot generalization on non-negated queries. Our code is available at <a href="https://github.com/aashishpokhrel27/spacevlm-drc">https://github.com/aashishpokhrel27/spacevlm-drc</a>.
           </div>
         </div>
@@ -614,7 +621,7 @@ robustly, often retrieving images that contain the very concept that was explici
     </div>
   </div>
 
-  <!-- ── EXPERIENCE ── -->
+  <!-- ── INDUSTRY EXPERIENCE ── -->
   <div class="section">
     <h2 class="section-title">Industry Experience</h2>
 
@@ -623,20 +630,23 @@ robustly, often retrieving images that contain the very concept that was explici
         <span class="exp-role">Data Engineer &nbsp;·&nbsp; Consultant</span>
         <span class="exp-date">Jan 2025 – Jul 2025</span>
       </div>
-      <p class="exp-org"><a href="https://ycotek.ai/">Ycotek</a></p>
+      <p class="exp-org"><a href="https://ycotek.ai/">Ycotek AI</a></p>
+      <p class="exp-clients">Clients: Torrens University &nbsp;·&nbsp; Media Design School &nbsp;·&nbsp; Strategic Education</p>
       <ul class="exp-bullets">
-        <li>Developed Power BI dashboards and Snowflake pipelines (ADF, Python), enhancing recruitment funnel analytics and improving data performance by 30-40%.</li>
+        <li>Built Power BI semantic models and Snowflake pipelines using Azure Data Factory and Python for EdTech clients across multiple tenants; improved data integration performance by 30–40% and enforced per-institution data access policies via row-level security.</li>
       </ul>
     </div>
 
     <div class="exp-item">
       <div class="exp-header">
-        <span class="exp-role">Data Engineer, Business Intelligence &nbsp;·&nbsp; Consultant</span>
+        <span class="exp-role">Data Engineer &nbsp;·&nbsp; Business Intelligence Developer &nbsp;·&nbsp; Consultant</span>
         <span class="exp-date">Aug 2022 – Jan 2025</span>
       </div>
-      <p class="exp-org"><a href="https://logicinfo.com/">Logic Information Systems</a> &nbsp;·&nbsp; Fortune 500 Retail Clients</p>
+      <p class="exp-org"><a href="https://logicinfo.com/">Logic Information Systems</a> &nbsp;·&nbsp; <a href="https://lisnepal.com.np/">LIS Nepal Pvt. Ltd.</a></p>
+      <p class="exp-clients">Clients: Ralph Lauren &nbsp;·&nbsp; Express Inc. &nbsp;·&nbsp; Belk &nbsp;·&nbsp; Samsworth Brothers</p>
       <ul class="exp-bullets">
-        <li>Architected and maintained 100% reliable, end-to-end ETL/ELT pipelines and executive dashboards (Python, Snowflake, Airflow, Tableau) for Fortune 500 retailers, integrating RFM and time-series models that informed cross-functional supply chain decisions while reducing QA time by 25%.</li>
+        <li>Architected end-to-end ETL/ELT pipelines and executive dashboards (Python, Snowflake, Airflow, Power BI, Tableau) for Fortune 500 retail clients; integrated RFM and time-series models informing supply chain and promotions decisions while reducing QA cycle time by 25%.</li>
+        <li>Led migration of reporting infrastructure from QlikView and MicroStrategy to Power BI; developed Python automation scripts to streamline the migration across multiple client environments.</li>
       </ul>
     </div>
 
