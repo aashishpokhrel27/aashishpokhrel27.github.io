@@ -106,7 +106,7 @@
       margin-bottom: 20px;
     }
 
-    /* ── CV DROPDOWN ─────────────────────────────── */
+    /* ── CV LINKS ─────────────────────────────── */
     .cv-links {
       display: flex;
       gap: 16px;
@@ -117,68 +117,6 @@
     }
 
     .cv-links span { color: var(--ink-light); }
-
-    .cv-dropdown-wrap {
-      position: relative;
-      display: inline-block;
-    }
-
-    .cv-btn {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 4px 12px;
-      font-size: 13.5px;
-      font-family: var(--sans);
-      color: var(--accent);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: background 0.15s, border-color 0.15s;
-    }
-
-    .cv-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
-
-    .cv-btn .caret {
-      font-size: 9px;
-      transition: transform 0.2s;
-      display: inline-block;
-    }
-
-    .cv-btn.open .caret { transform: rotate(180deg); }
-
-    .cv-menu {
-      display: none;
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 0;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      min-width: 180px;
-      z-index: 100;
-      overflow: hidden;
-    }
-
-    .cv-menu.open { display: block; }
-
-    .cv-menu a {
-      display: block;
-      padding: 9px 16px;
-      font-size: 13px;
-      color: var(--ink);
-      border-bottom: 1px solid var(--border);
-      transition: background 0.12s;
-    }
-
-    .cv-menu a:last-child { border-bottom: none; }
-
-    .cv-menu a:hover {
-      background: var(--accent-soft);
-      text-decoration: none;
-    }
 
     /* ── DIVIDER ─────────────────────────────── */
     hr.section-rule {
@@ -522,18 +460,7 @@
       </p>
 
       <div class="cv-links">
-        <div class="cv-dropdown-wrap" id="cvWrap">
-          <button
-          class="cv-btn"
-          id="cvBtn"
-          onclick="toggleCV(event)">
-            CV <span class="caret">▼</span>
-          </button>
-          <div class="cv-menu" id="cvMenu">
-            <a href="assets/cv/cv_aashish_academic.pdf" target="_blank">Academic CV</a>
-            <a href="#" target="_blank">Professional CV [coming soon]</a>
-          </div>
-        </div>
+        <a href="assets/cv/cv_aashish_academic.pdf" target="_blank">CV</a>
         <span>/</span>
         <a href="https://scholar.google.com/citations?user=smS19s8AAAAJ" target="_blank">Google Scholar</a>
         <span>/</span>
@@ -803,21 +730,6 @@ Providing essential background on VLMs and negation in natural language processi
 </div>
 
 <script>
-  // ── CV dropdown ──────────────────────────────
-  function toggleCV(e) {
-    e.stopPropagation();
-    const btn = document.getElementById('cvBtn');
-    const menu = document.getElementById('cvMenu');
-    const isOpen = menu.classList.contains('open');
-    menu.classList.toggle('open', !isOpen);
-    btn.classList.toggle('open', !isOpen);
-  }
-
-  document.addEventListener('click', function() {
-    document.getElementById('cvMenu').classList.remove('open');
-    document.getElementById('cvBtn').classList.remove('open');
-  });
-
   // ── Abstract toggle ───────────────────────────
   document.addEventListener('click', function(e) {
     const toggle = e.target.closest('.abstract-toggle');
