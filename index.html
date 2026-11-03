@@ -513,6 +513,14 @@
           <p class="pub-title">EgoThermal: An Egocentric RGB-D-T Dataset and Benchmark for Physical Awareness in Wearable Assistive Device</p>
           <p class="pub-authors"><a href="https://bipin38.github.io/Portfolio/" style="color: gray;">Bipin Ghimire</a>, <span class="me"><b>Aashish Pokhrel</b></span>, <a href="https://pmpaudel.com.np/" style="color: gray;">Prashanna Mani Paudel</a> and <a href="https://sheshap.github.io/" style="color: gray;">Shivanand Venkanna Sheshappanavar</a></p>
           <p class="pub-venue"><span class="conf" style="color: #5d7c35">EOF Workshop @ WACV 2027</span> (accepted)</p>
+          <div class="pub-links">
+            <a href="#">pdf [coming soon]</a>
+            <a href="#">code [coming soon]</a>
+            <a href="#" class="abstract-toggle" data-target="abstract-egothermal">abstract</a>
+          </div>
+          <div class="abstract-panel" id="abstract-egothermal" style="text-align: justify;">
+            For a blind or low-vision user, identifying whether a stove burner is hot may require approaching it closely enough to feel its heat. RGB and depth support recognition and distance estimation, but neither measures surface temperature, and a hot burner can look like a cold one. We introduce EgoThermal, an egocentric RGB-depth-thermal (RGB-D-T) dataset and benchmark captured with a head-mounted prototype, containing 1,768 indoor scenes and 7,598 objects annotated with metric distance, apparent radiometric surface temperature, and, where applicable, operational state, together with 40,078 rule-generated question-answer pairs. Our central finding concerns how frozen vision-language models (VLMs) interpret physical measurements. Across six frozen VLMs, supplying explicit, annotation-derived distance and temperature values improves overall VQA accuracy by about 40 percentage points compared with color-mapped sensor images. In two Qwen models, printing the same values onto RGB images substantially narrows this gap, and measurements extracted from RGB detector boxes also outperform color-mapped inputs. For stove-burner ON/OFF labels assigned by annotators with access to thermal imagery, RGB achieves near-chance discrimination (AUROC 0.51), while thermal reaches 0.83. Thermal also improves hazard localization at a 60&nbsp;°C benchmark threshold. Together, these results support assistive devices that associate sensor measurements with detected objects and supply those values directly to language models. Data, annotations, and code will be made public upon acceptance.
+          </div>
         </div>
       </li>
 
