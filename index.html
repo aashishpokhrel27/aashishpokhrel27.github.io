@@ -4,50 +4,182 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aashish Pokhrel</title>
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── THEME TOKENS ─────────────────────────────── */
     :root {
-      --cream: #faf9f6;
+      --bg: #f6f5f1;
+      --bg-grad: radial-gradient(900px 380px at 12% -80px, #e3ebfb 0%, transparent 70%),
+                 radial-gradient(700px 320px at 95% -60px, #efe6f7 0%, transparent 70%);
+      --surface: #ffffff;
+      --surface-2: #faf9f6;
       --ink: #1a1a18;
-      --ink-mid: #4a4a45;
-      --ink-light: #8a8a82;
+      --ink-mid: #45454a;
+      --ink-light: #7d7d86;
       --accent: #2a5298;
+      --accent-2: #6b4fbb;
       --accent-soft: #e8edf6;
-      --border: #e2e0d8;
+      --border: #e4e1d8;
+      --border-soft: #efece4;
       --red: #b5392a;
+      --green: #3f7a35;
+      --green-soft: #e9f3e6;
+      --shadow: 0 1px 2px rgba(20,20,30,.04), 0 6px 20px rgba(20,20,30,.05);
+      --shadow-hover: 0 2px 4px rgba(20,20,30,.06), 0 12px 28px rgba(20,20,30,.10);
+      --nav-bg: rgba(246,245,241,.82);
       --serif: 'EB Garamond', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f1117;
+        --bg-grad: radial-gradient(900px 380px at 12% -80px, #18233f 0%, transparent 70%),
+                   radial-gradient(700px 320px at 95% -60px, #261c3d 0%, transparent 70%);
+        --surface: #171a22;
+        --surface-2: #131620;
+        --ink: #ecebe6;
+        --ink-mid: #b9b9c2;
+        --ink-light: #8a8b97;
+        --accent: #8db4ff;
+        --accent-2: #b79cff;
+        --accent-soft: #1e2a45;
+        --border: #272b38;
+        --border-soft: #1f2330;
+        --red: #ff8a78;
+        --green: #8fd081;
+        --green-soft: #1b2b1a;
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+        --shadow-hover: 0 2px 4px rgba(0,0,0,.4), 0 12px 28px rgba(0,0,0,.4);
+        --nav-bg: rgba(15,17,23,.82);
+        color-scheme: dark;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0f1117;
+      --bg-grad: radial-gradient(900px 380px at 12% -80px, #18233f 0%, transparent 70%),
+                 radial-gradient(700px 320px at 95% -60px, #261c3d 0%, transparent 70%);
+      --surface: #171a22;
+      --surface-2: #131620;
+      --ink: #ecebe6;
+      --ink-mid: #b9b9c2;
+      --ink-light: #8a8b97;
+      --accent: #8db4ff;
+      --accent-2: #b79cff;
+      --accent-soft: #1e2a45;
+      --border: #272b38;
+      --border-soft: #1f2330;
+      --red: #ff8a78;
+      --green: #8fd081;
+      --green-soft: #1b2b1a;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+      --shadow-hover: 0 2px 4px rgba(0,0,0,.4), 0 12px 28px rgba(0,0,0,.4);
+      --nav-bg: rgba(15,17,23,.82);
+      color-scheme: dark;
     }
 
     html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
       font-family: var(--sans);
-      background: var(--cream);
+      background: var(--bg) var(--bg-grad) no-repeat;
       color: var(--ink);
       line-height: 1.65;
       min-height: 100vh;
+      transition: background-color .25s, color .25s;
     }
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+    /* ── TOP BAR ─────────────────────────────── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 10px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .topnav {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .topnav::-webkit-scrollbar { display: none; }
+
+    .topnav a {
+      font-size: 13px;
+      color: var(--ink-mid);
+      padding: 5px 11px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+
+    .topnav a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+
+    .theme-toggle {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink-mid);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      line-height: 1;
+      transition: background .15s, border-color .15s, transform .15s;
+    }
+
+    .theme-toggle:hover { border-color: var(--accent); background: var(--accent-soft); transform: rotate(15deg); }
 
     .page-wrap {
-      max-width: 900px;
+      max-width: 940px;
       margin: 0 auto;
       padding: 36px 32px 48px;
     }
 
-    /* ── TOP SECTION ─────────────────────────────── */
+    /* ── HERO ─────────────────────────────── */
     .top {
       display: grid;
       grid-template-columns: 220px 1fr;
       gap: 40px;
-      align-items: start;
-      margin-bottom: 28px;
+      align-items: center;
+      margin-bottom: 40px;
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
     }
 
     .photo-col { display: flex; flex-direction: column; align-items: center; gap: 14px; }
@@ -55,112 +187,139 @@
     .photo-frame {
       width: 200px;
       height: 200px;
-      border-radius: 4px;
+      border-radius: 50%;
       overflow: hidden;
-      border: 1px solid var(--border);
-      background: #ddd;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 8px 24px rgba(42,82,152,.25);
     }
 
-    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    .social-links {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .photo-frame img {
       width: 100%;
-      text-align: center;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 50%;
+      border: 3px solid var(--surface);
     }
-
-    .social-links a {
-      font-family: var(--sans);
-      font-size: 12.5px;
-      color: var(--ink-mid);
-      letter-spacing: 0.01em;
-    }
-
-    .social-links a:hover { color: var(--accent); text-decoration: none; }
-
-    .bio-col {}
 
     .bio-name {
       font-family: var(--serif);
-      font-size: 2rem;
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
       margin-bottom: 4px;
+      background: linear-gradient(90deg, var(--ink) 40%, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .bio-contact {
       font-size: 13px;
       color: var(--ink-light);
       margin-bottom: 16px;
-      font-family: var(--sans);
     }
 
     .bio-text {
       font-family: var(--serif);
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: var(--ink-mid);
-      line-height: 1.35;
+      line-height: 1.45;
       margin-bottom: 20px;
     }
 
-    /* ── CV LINKS ─────────────────────────────── */
+    .bio-text b { color: var(--ink); font-weight: 600; }
+
+    /* ── HERO LINKS ─────────────────────────────── */
     .cv-links {
       display: flex;
-      gap: 16px;
+      gap: 8px;
       flex-wrap: wrap;
       align-items: center;
       font-size: 13.5px;
-      color: var(--ink-mid);
     }
 
-    .cv-links span { color: var(--ink-light); }
+    .cv-links span { display: none; }
 
-    /* ── DIVIDER ─────────────────────────────── */
-    hr.section-rule {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0 0 14px;
+    .cv-links a {
+      color: var(--accent);
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      padding: 5px 14px;
+      border-radius: 999px;
+      transition: background .15s, border-color .15s, transform .15s;
     }
+
+    .cv-links a:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .cv-links a:first-child {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      border-color: transparent;
+    }
+
+    hr.section-rule { display: none; }
 
     /* ── SECTIONS ─────────────────────────────── */
-    .section { margin-bottom: 10px; }
+    .section { margin-bottom: 44px; scroll-margin-top: 70px; }
 
     .section-title {
       font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 400;
-      letter-spacing: 0.01em;
+      font-size: 1.55rem;
+      font-weight: 500;
+      letter-spacing: 0.005em;
       color: var(--ink);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      scroll-margin-top: 70px;
     }
 
-    /* ── NEWS ─────────────────────────────── */
-    .news-list { list-style: none; }
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 1.2em;
+      border-radius: 4px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    }
+
+    /* ── NEWS / TALKS ─────────────────────────────── */
+    .news-list {
+      list-style: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 6px 20px;
+    }
 
     .news-list li {
       display: flex;
-      gap: 16px;
+      gap: 18px;
       font-size: 14px;
       color: var(--ink-mid);
-      padding: 7px 0;
-      border-bottom: 1px solid #f0ede6;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border-soft);
       line-height: 1.6;
     }
 
     .news-list li:last-child { border-bottom: none; }
 
     .news-date {
-      font-family: var(--sans);
       font-size: 12px;
-      color: var(--ink-light);
+      font-weight: 500;
+      color: var(--accent);
       white-space: nowrap;
       padding-top: 2px;
-      min-width: 75px;
+      min-width: 74px;
     }
 
     .news-list strong { color: var(--ink); font-weight: 500; }
@@ -171,38 +330,43 @@
       color: var(--accent);
       font-size: 11px;
       font-weight: 500;
-      padding: 1px 7px;
-      border-radius: 3px;
+      padding: 1px 9px;
+      border-radius: 999px;
       letter-spacing: 0.02em;
       vertical-align: middle;
-      margin-left: 4px;
+      margin-left: 2px;
     }
 
-    .venue-tag.workshop {
-      background: #f0f6ee;
-      color: #2e6b2a;
-    }
+    .venue-tag.workshop { background: var(--green-soft); color: var(--green); }
+
+    .green-link, .conf-green, .conf-green a { color: var(--green) !important; }
+    .coauthor { color: var(--ink-light); }
+    .coauthor:hover { color: var(--accent); }
 
     /* ── PUBLICATIONS ────────────────────────── */
-    .pub-list { list-style: none; }
+    .pub-list { list-style: none; display: grid; gap: 16px; }
 
     .pub-item {
       display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 20px;
-      padding: 18px 0;
-      border-bottom: 1px solid #f0ede6;
+      grid-template-columns: 140px 1fr;
+      gap: 22px;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
       align-items: start;
+      transition: box-shadow .2s, transform .2s, border-color .2s;
     }
 
-    .pub-item:last-child { border-bottom: none; }
+    .pub-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); border-color: var(--accent); }
 
     .pub-thumb {
-      width: 120px;
-      height: 80px;
-      background: #ede9e0;
+      width: 140px;
+      height: 96px;
+      background: var(--surface-2);
       border: 1px solid var(--border);
-      border-radius: 3px;
+      border-radius: 10px;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -217,20 +381,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      color: var(--ink-light);
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--accent);
       text-align: center;
       padding: 8px;
-      font-style: italic;
+      background: linear-gradient(135deg, var(--accent-soft), var(--surface-2));
     }
 
     .pub-title {
       font-family: var(--serif);
-      font-size: 1.02rem;
+      font-size: 1.12rem;
       font-weight: 500;
       color: var(--ink);
-      line-height: 1.45;
-      margin-bottom: 4px;
+      line-height: 1.4;
+      margin-bottom: 5px;
     }
 
     .pub-authors {
@@ -240,65 +406,56 @@
       line-height: 1.5;
     }
 
-    .pub-authors .me { color: var(--ink-mid); font-weight: 500; text-decoration: underline; text-decoration-style: dotted; }
+    .pub-authors .me { color: var(--ink); font-weight: 500; }
 
     .pub-venue {
       font-size: 13px;
       color: var(--ink-mid);
-      font-style: italic;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .pub-venue .conf {
-      font-style: normal;
-      font-weight: 500;
-      color: var(--red);
-    }
+    .pub-venue .conf { font-weight: 500; color: var(--red); }
 
-    .pub-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      font-size: 12.5px;
-    }
+    .pub-links { display: flex; gap: 8px; flex-wrap: wrap; font-size: 12.5px; }
 
     .pub-links a {
       color: var(--accent);
       border: 1px solid var(--border);
-      padding: 2px 9px;
-      border-radius: 3px;
-      transition: background 0.12s, border-color 0.12s;
+      background: var(--surface-2);
+      padding: 2px 12px;
+      border-radius: 999px;
+      transition: background .12s, border-color .12s;
     }
 
-    .pub-links a:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-      text-decoration: none;
-    }
+    .pub-links a:hover { background: var(--accent-soft); border-color: var(--accent); text-decoration: none; }
 
     /* ── ABSTRACT PANEL ────────────────────── */
     .abstract-panel {
       display: none;
-      margin-top: 10px;
-      padding: 10px 14px;
+      margin-top: 12px;
+      padding: 12px 16px;
       background: var(--accent-soft);
       border-left: 3px solid var(--accent);
-      border-radius: 0 3px 3px 0;
+      border-radius: 0 8px 8px 0;
       font-family: var(--serif);
-      font-size: 0.95rem;
+      font-size: 0.97rem;
       color: var(--ink-mid);
       line-height: 1.6;
     }
 
     .abstract-panel.open { display: block; }
 
-    .pub-links a.abstract-active {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-    }
+    .pub-links a.abstract-active { background: var(--accent-soft); border-color: var(--accent); }
 
     /* ── EXPERIENCE ────────────────────────── */
-    .exp-item { margin-bottom: 20px; }
+    .exp-item {
+      margin-bottom: 16px;
+      padding: 20px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
 
     .exp-header {
       display: flex;
@@ -310,95 +467,111 @@
 
     .exp-role {
       font-family: var(--serif);
-      font-size: 1.02rem;
+      font-size: 1.12rem;
       font-weight: 500;
       color: var(--ink);
     }
 
     .exp-date {
       font-size: 12px;
-      color: var(--ink-light);
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 2px 10px;
+      border-radius: 999px;
       white-space: nowrap;
       flex-shrink: 0;
     }
 
-    .exp-org {
-      font-size: 13.5px;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
+    .exp-org { font-size: 13.5px; color: var(--accent); margin-bottom: 4px; }
 
-    .exp-clients {
-      font-size: 12.5px;
-      color: var(--ink-light);
-      font-style: italic;
-      margin-bottom: 8px;
-    }
+    .exp-clients { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-bottom: 8px; }
 
     .exp-bullets {
       padding-left: 18px;
       font-size: 13.5px;
       color: var(--ink-mid);
       line-height: 1.7;
+      margin-top: 8px;
     }
 
-    .exp-bullets li { margin-bottom: 3px; }
+    .exp-bullets li { margin-bottom: 5px; }
+    .exp-bullets li::marker { color: var(--accent); }
+    .exp-bullets b { color: var(--ink); font-weight: 500; }
+
+    .section > .exp-bullets {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 18px 22px 14px 40px;
+      margin-top: 0;
+    }
 
     /* ── EDUCATION ────────────────────────── */
     .edu-item {
       display: flex;
       justify-content: space-between;
       gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f0ede6;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
     }
 
-    .edu-item:last-child { border-bottom: none; }
-
-    .edu-degree {
-      font-family: var(--serif);
-      font-size: 1rem;
-      color: var(--ink);
-    }
-
-    .edu-school {
-      font-size: 13px;
-      color: var(--ink-mid);
-      margin-top: 2px;
-    }
+    .edu-degree { font-family: var(--serif); font-size: 1.08rem; font-weight: 500; color: var(--ink); }
+    .edu-school { font-size: 13px; color: var(--ink-mid); margin-top: 2px; }
 
     .edu-date {
       font-size: 12px;
-      color: var(--ink-light);
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 2px 10px;
+      border-radius: 999px;
       white-space: nowrap;
-      padding-top: 3px;
+      align-self: flex-start;
     }
 
     /* ── SKILLS ────────────────────────────── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 14px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 16px 18px;
     }
 
     .skill-label {
       font-size: 11px;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.08em;
       color: var(--ink-light);
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
 
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
     .skill-tag {
       font-size: 12.5px;
       color: var(--ink-mid);
-      background: white;
+      background: var(--surface-2);
       border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 2px 9px;
+      border-radius: 999px;
+      padding: 2px 11px;
+      transition: border-color .15s, color .15s;
     }
+
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ── FOOTER ────────────────────────────── */
     .footer {
@@ -410,38 +583,55 @@
       text-align: center;
     }
 
+    .quote-author { color: var(--accent); }
+
     /* ── RESPONSIVE ────────────────────────── */
-    @media (max-width: 640px) {
-      .page-wrap { padding: 28px 20px 48px; }
+    @media (max-width: 700px) {
+      .topbar-inner { padding: 8px 16px; }
+      .page-wrap { padding: 24px 16px 48px; }
 
       .top {
         grid-template-columns: 1fr;
         gap: 20px;
-      }
-
-      .photo-col {
-        flex-direction: row;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .photo-frame { width: 100px; height: 100px; }
-
-      .social-links {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        padding: 22px 18px;
         text-align: left;
       }
 
-      .pub-item { grid-template-columns: 1fr; }
-      .pub-thumb { width: 100%; height: 100px; }
+      .photo-col { align-items: flex-start; }
+      .photo-frame { width: 120px; height: 120px; }
+      .bio-name { font-size: 2rem; }
 
-      .exp-header { flex-direction: column; gap: 2px; }
+      .pub-item { grid-template-columns: 1fr; padding: 16px; }
+      .pub-thumb { width: 100%; height: 120px; }
+
+      .exp-header { flex-direction: column; gap: 4px; }
+      .exp-header .exp-date { align-self: flex-start; }
+      .edu-item { flex-direction: column; }
+      .news-list li { flex-direction: column; gap: 2px; }
     }
-</style>
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
 </head>
 <body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <nav class="topnav" aria-label="Sections">
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
+      <span id="themeIcon" aria-hidden="true">&#9790;</span>
+    </button>
+  </div>
+</header>
 <div class="page-wrap">
 
   <!-- ── TOP ── -->
@@ -475,7 +665,7 @@
 
   <!-- ── NEWS ── -->
   <div class="section">
-    <h2 class="section-title">News</h2>
+    <h2 class="section-title" id="news">News</h2>
     <ul class="news-list">
       <li>
         <span class="news-date">Nov 2026</span>
@@ -495,14 +685,14 @@
       </li>
       <li>
         <span class="news-date">Mar 2026</span>
-        <span>Paper accepted at <span class="venue-tag workshop"><a href="https://grailworkshops.github.io/" style="color: #5d7c35">GRAIL-V @ CVPR 2026</a></span> — <strong>Negation Matters: Training-Free Negation-Aware Image Retrieval</strong></span>
+        <span>Paper accepted at <span class="venue-tag workshop"><a href="https://grailworkshops.github.io/" class="green-link">GRAIL-V @ CVPR 2026</a></span> — <strong>Negation Matters: Training-Free Negation-Aware Image Retrieval</strong></span>
       </li>
     </ul>
   </div>
 
   <!-- ── PUBLICATIONS ── -->
   <div class="section">
-    <h2 class="section-title">Publications</h2>
+    <h2 class="section-title" id="publications">Publications</h2>
     <ul class="pub-list">
 
       <li class="pub-item">
@@ -511,8 +701,8 @@
         </div>
         <div class="pub-info">
           <p class="pub-title">EgoThermal: An Egocentric RGB-D-T Dataset and Benchmark for Physical Awareness in Wearable Assistive Device</p>
-          <p class="pub-authors"><a href="https://bipin38.github.io/Portfolio/" style="color: gray;">Bipin Ghimire</a>, <span class="me"><b>Aashish Pokhrel</b></span>, <a href="https://pmpaudel.com.np/" style="color: gray;">Prashanna Mani Paudel</a> and <a href="https://sheshap.github.io/" style="color: gray;">Shivanand Venkanna Sheshappanavar</a></p>
-          <p class="pub-venue"><span class="conf" style="color: #5d7c35">EOF Workshop @ WACV 2027</span> (accepted)</p>
+          <p class="pub-authors"><a href="https://bipin38.github.io/Portfolio/" class="coauthor">Bipin Ghimire</a>, <span class="me"><b>Aashish Pokhrel</b></span>, <a href="https://pmpaudel.com.np/" class="coauthor">Prashanna Mani Paudel</a> and <a href="https://sheshap.github.io/" class="coauthor">Shivanand Venkanna Sheshappanavar</a></p>
+          <p class="pub-venue"><span class="conf conf-green">EOF Workshop @ WACV 2027</span> (accepted)</p>
           <div class="pub-links">
             <a href="#">pdf [coming soon]</a>
             <a href="#">code [coming soon]</a>
@@ -530,8 +720,8 @@
         </div>
         <div class="pub-info">
           <p class="pub-title">Negation Matters: Training-Free Negation-Aware Image Retrieval</p>
-          <p class="pub-authors"><span class="me"><b>Aashish Pokhrel</b></span> and <a href="https://sheshap.github.io/" style="color: gray;">Shivanand Venkanna Sheshappanavar</a></p>
-          <p class="pub-venue"><span class="conf"><a href="https://grailworkshops.github.io/" style="color: #5d7c35">GRAIL-V @ CVPR 2026</a></span></p>
+          <p class="pub-authors"><span class="me"><b>Aashish Pokhrel</b></span> and <a href="https://sheshap.github.io/" class="coauthor">Shivanand Venkanna Sheshappanavar</a></p>
+          <p class="pub-venue"><span class="conf"><a href="https://grailworkshops.github.io/" class="green-link">GRAIL-V @ CVPR 2026</a></span></p>
           <div class="pub-links">
             <a href="https://openaccess.thecvf.com/content/CVPR2026W/GRAIL-V/papers/Pokhrel_Negation_Matters_Training-Free_Negation-Aware_Image_Retrieval_CVPRW_2026_paper.pdf">pdf</a>
             <a href="https://github.com/aashishpokhrel27/spacevlm-drc">code</a>
@@ -550,7 +740,7 @@ robustly, often retrieving images that contain the very concept that was explici
         </div>
         <div class="pub-info">
           <p class="pub-title">Negation in Vision-Language Models: A Survey</p>
-          <p class="pub-authors"><span class="me"><b>Aashish Pokhrel</b></span>, <a href="https://bipin38.github.io/Portfolio/" style="color: gray;">Bipin Ghimire</a>, <a href="https://pmpaudel.com.np/" style="color: gray;">Prashanna Mani Paudel</a> and <a href="https://sheshap.github.io/" style="color: gray;">Shivanand Venkanna Sheshappanavar</a></p>
+          <p class="pub-authors"><span class="me"><b>Aashish Pokhrel</b></span>, <a href="https://bipin38.github.io/Portfolio/" class="coauthor">Bipin Ghimire</a>, <a href="https://pmpaudel.com.np/" class="coauthor">Prashanna Mani Paudel</a> and <a href="https://sheshap.github.io/" class="coauthor">Shivanand Venkanna Sheshappanavar</a></p>
           <p class="pub-venue"><span class="conf"><a href="https://icpr2026.org/">ICPR 2026</a></span></p>
           <div class="pub-links">
             <a href="https://link.springer.com/chapter/10.1007/978-3-032-31927-2_17">paper</a>
@@ -569,7 +759,7 @@ Providing essential background on VLMs and negation in natural language processi
 
   <!-- ── RESEARCH EXPERIENCE ── -->
   <div class="section">
-    <h2 class="section-title">Research Experience</h2>
+    <h2 class="section-title" id="research">Research Experience</h2>
 
     <div class="exp-item">
       <div class="exp-header">
@@ -589,7 +779,7 @@ Providing essential background on VLMs and negation in natural language processi
 
   <!-- ── PROFESSIONAL EXPERIENCE ── -->
   <div class="section">
-    <h2 class="section-title">Professional Experience</h2>
+    <h2 class="section-title" id="experience">Professional Experience</h2>
 
     <div class="exp-item">
       <div class="exp-header">
@@ -621,7 +811,7 @@ Providing essential background on VLMs and negation in natural language processi
 
   <!-- ── TALKS ── -->
   <div class="section">
-    <h2 class="section-title">Presentations &amp; Talks</h2>
+    <h2 class="section-title" id="talks">Presentations &amp; Talks</h2>
     <ul class="news-list">
       <li>
         <span class="news-date">Oct 2026</span>
@@ -644,7 +834,7 @@ Providing essential background on VLMs and negation in natural language processi
 
   <!-- ── EDUCATION ── -->
   <div class="section">
-    <h2 class="section-title">Education</h2>
+    <h2 class="section-title" id="education">Education</h2>
 
     <div class="edu-item">
       <div>
@@ -666,7 +856,7 @@ Providing essential background on VLMs and negation in natural language processi
 
   <!-- ── HONORS ── -->
   <div class="section">
-    <h2 class="section-title">Honors, Awards &amp; Funding</h2>
+    <h2 class="section-title" id="honors">Honors, Awards &amp; Funding</h2>
     <ul class="exp-bullets">
       <li>Graduate Research Assistantship, University of Wyoming, 2025–2027.</li>
       <li>Full Scholarship, Bachelor of Engineering, Tribhuvan University, 2016. Ranked 412 of 10,000+ students (top 5%) in the IoE national entrance examination.</li>
@@ -674,8 +864,8 @@ Providing essential background on VLMs and negation in natural language processi
   </div>
 
   <!-- ── SKILLS ── -->
-  <div class="section" style="margin-top: 24px;">
-    <h2 class="section-title">Skills</h2>
+  <div class="section">
+    <h2 class="section-title" id="skills">Skills</h2>
     <div class="skills-grid">
       <div class="skill-group">
         <p class="skill-label">Languages &amp; AI Frameworks</p>
@@ -732,12 +922,40 @@ Providing essential background on VLMs and negation in natural language processi
   </div>
 
   <div class="footer">
-    <p><small>Vision is the art of seeing what is invisible to others. &mdash; <span style="color: #006699;"><i><b><a href="https://en.wikipedia.org/wiki/Jonathan_Swift">Jonathan Swift</a></b></i></span></small></p>
+    <p><small>Vision is the art of seeing what is invisible to others. &mdash; <span class="quote-author"><i><b><a href="https://en.wikipedia.org/wiki/Jonathan_Swift">Jonathan Swift</a></b></i></span></small></p>
   </div>
 
 </div>
 
 <script>
+  // ── Theme toggle ──────────────────────────────
+  (function () {
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function effective() {
+      return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light');
+    }
+
+    function paint() {
+      const dark = effective() === 'dark';
+      icon.innerHTML = dark ? '&#9728;' : '&#9790;';
+      btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    btn.addEventListener('click', function () {
+      const next = effective() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      paint();
+    });
+
+    mq.addEventListener('change', paint);
+    paint();
+  })();
+
   // ── Abstract toggle ───────────────────────────
   document.addEventListener('click', function(e) {
     const toggle = e.target.closest('.abstract-toggle');
