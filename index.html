@@ -669,6 +669,10 @@
     <ul class="news-list">
       <li>
         <span class="news-date">Nov 2026</span>
+        <span>New preprint on <span class="venue-tag"><a href="https://arxiv.org/abs/2611.15047">arXiv</a></span> — <strong>Negation Through Affirmation: Leveraging Positive Evidence in Vision-Language Models</strong></span>
+      </li>
+      <li>
+        <span class="news-date">Nov 2026</span>
         <span>Paper accepted at <span class="venue-tag workshop">EOF @ WACV 2027</span> — <strong>EgoThermal: An Egocentric RGB-D-T Dataset and Benchmark</strong></span>
       </li>
       <li>
@@ -694,6 +698,25 @@
   <div class="section">
     <h2 class="section-title" id="publications">Publications</h2>
     <ul class="pub-list">
+
+      <li class="pub-item">
+        <div class="pub-thumb">
+          <div class="pub-thumb-placeholder">NAES</div>
+        </div>
+        <div class="pub-info">
+          <p class="pub-title">Negation Through Affirmation: Leveraging Positive Evidence in Vision-Language Models</p>
+          <p class="pub-authors"><span class="me"><b>Aashish Pokhrel</b></span>, Tejas Anvekar and <a href="https://sheshap.github.io/" class="coauthor">Shivanand Venkanna Sheshappanavar</a></p>
+          <p class="pub-venue"><span class="conf">arXiv:2611.15047</span> (preprint, 2026)</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2611.15047">arXiv</a>
+            <a href="https://arxiv.org/pdf/2611.15047">pdf</a>
+            <a href="#" class="abstract-toggle" data-target="abstract-naes">abstract</a>
+          </div>
+          <div class="abstract-panel" id="abstract-naes" style="text-align: justify;">
+            Frozen vision-language models often match concepts mentioned in a caption without reliably respecting their negation: a query for "a kitchen with no toaster" favors an image containing a toaster. Yet these models are substantially stronger at matching affirmative descriptions. We exploit this asymmetry with Negation-Aware Evidence Scoring (NAES), which reformulates negated descriptions into affirmative queries and combines their evidence by caption structure. A lightweight text decomposer, NegSplit, extracts negated spans and the remaining affirmative context. For captions with an affirmative remainder, NAES matches that content and applies a presence-based correction for the denial. When no affirmative content remains, it queries the denied object's presence and reflects the evidence around a reference to score the negated description. This yields substantial accuracy gains: with LAION-2B CLIP, NAES achieves 82.4% accuracy on COCO-MCQ and 93.0% on VOC2007-MCQ, surpassing KTN by 2.9 and 0.9 percentage points; with OpenAI CLIP, it exceeds PeakPatch accuracy by 4.4 points on COCO-MCQ and 26.0 points on VOC2007-MCQ. NAES also improves negated-description retrieval on COCO and MSR-VTT. The strongest multiple-choice results use competing descriptions to center and align evidence; retrieval improvements persist without this conditioning. These findings show that separating affirmative matching from denied-object evidence can substantially improve negation-aware ranking.
+          </div>
+        </div>
+      </li>
 
       <li class="pub-item">
         <div class="pub-thumb">
