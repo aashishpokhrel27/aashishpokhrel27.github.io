@@ -375,6 +375,10 @@
 
     .pub-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
+    /* wide figures: show the whole image, click to enlarge */
+    .thumb-full { display: block; width: 100%; height: 100%; background: #fff; }
+    .pub-thumb .thumb-full img { object-fit: contain; }
+
     .pub-thumb-placeholder {
       width: 100%;
       height: 100%;
@@ -701,11 +705,11 @@
 
       <li class="pub-item">
         <div class="pub-thumb">
-          <div class="pub-thumb-placeholder">NAES</div>
+          <a href="assets/images/NAES.png" class="thumb-full" target="_blank" title="View full figure"><img src="assets/images/NAES.png" alt="NAES teaser: retrieval and multiple-choice results on negated captions, compared with plain CLIP"/></a>
         </div>
         <div class="pub-info">
           <p class="pub-title">Negation Through Affirmation: Leveraging Positive Evidence in Vision-Language Models</p>
-          <p class="pub-authors"><span class="me"><b>Aashish Pokhrel</b></span>, Tejas Anvekar and <a href="https://sheshap.github.io/" class="coauthor">Shivanand Venkanna Sheshappanavar</a></p>
+          <p class="pub-authors"><span class="me"><b>Aashish Pokhrel</b></span>, <a href="https://tejasanvekar.com/" class="coauthor">Tejas Anvekar</a> and<a href="https://sheshap.github.io/" class="coauthor">Shivanand Venkanna Sheshappanavar</a></p>
           <p class="pub-venue"><span class="conf">arXiv:2611.15047</span> (preprint, 2026)</p>
           <div class="pub-links">
             <a href="https://arxiv.org/abs/2611.15047">arXiv</a>
